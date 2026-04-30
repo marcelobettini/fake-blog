@@ -1,0 +1,32 @@
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.author {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.likes {
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+}
