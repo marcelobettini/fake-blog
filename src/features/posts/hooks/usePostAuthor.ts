@@ -16,15 +16,14 @@ export function usePostAuthor(userId: number) {
         setLoading(true)
         if (!cancelled) {
           setData(result)
-          setLoading(false)
         }
       })
       .catch((err: unknown) => {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : 'Error desconocido')
-          setLoading(false)
         }
       })
+      .finally(() => setLoading(false))
 
     return () => {
       cancelled = true

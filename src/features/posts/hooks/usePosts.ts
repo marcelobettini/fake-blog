@@ -10,10 +10,11 @@ export function usePosts(page: number) {
 
     useEffect(() => {
         let cancelled = false
-        setLoading(true)
 
         fetchPosts((page - 1) * LIMIT, LIMIT)
             .then(result => {
+                setLoading(true)
+                setError(null)
                 if (!cancelled) {
                     setData(result)
                 }
