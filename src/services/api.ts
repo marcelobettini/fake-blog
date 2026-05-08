@@ -28,3 +28,5 @@ export async function fetchPostComments(id: number): Promise<CommentsResponse> {
     if (!res.ok) throw new Error(`Error ${res.status}: No se pudieron cargar los comentarios`)
     return res.json() as Promise<CommentsResponse>
 }
+
+//TODO fetchUsers
