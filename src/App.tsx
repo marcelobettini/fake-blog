@@ -6,24 +6,29 @@ import { About } from './pages/About'
 import { Blog } from './pages/Blog'
 import { Post } from './pages/Post'
 import { Login } from './pages/Login'
+import { AuthProvider } from './features/auth/context/AuthContext'
+import { Users } from './pages/Users'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 export function App() {
-
-
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<Post />} />
-          <Route path="/about" element={<About />} />
-          <Route path='/login' element={<Login />} />
-        </Route>
-        <Route path="*" element={<h1>Error</h1>} />
+      <AuthProvider>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<Post />} />
+            <Route path="/about" element={<About />} />
+            <Route path='/login' element={<Login />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path='/users' element={<Users />} />
+            </Route>
+          </Route>
+          <Route path="*" element={<h1>Error</h1>} />
 
-      </Routes>
-
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   )
 }
